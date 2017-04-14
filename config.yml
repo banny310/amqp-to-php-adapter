@@ -1,0 +1,29 @@
+default:
+    logger:
+        error_log: 'logs/filelog-error.log'
+        info_log: 'logs/filelog-info.log'
+
+    connections:
+        default:
+            host:     'dev.inonecar.com'
+            port:     5672
+            user:     'guest'
+            password: 'guest'
+            vhost:    '/'
+
+    consumers:
+        mail_sender:
+            connection:       default
+            exchange_options: {name: 'mail-queue', type: direct}
+            queue_options:    {name: 'mail-queue', durable: true, autoDelete: false}
+            endpoint:         'https://www.inonecar.com/console/mail-consumer'
+            error_log:        'logs/mail-sender-error.log'
+            info_log:         'logs/mail-sender-info.log'
+
+        upload_photo:
+            connection:       default
+            exchange_options: {name: 'photo-queue', type: direct}
+            queue_options:    {name: 'photo-queue', durable: true, autoDelete: false}
+            execute:          {command: 'php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression', cwd: '/var/www', compression: true, properties: true}
+            error_log:        'logs/upload-photo-error.log'
+            info_log:         'logs/upload-photo-info.log'
