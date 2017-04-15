@@ -97,10 +97,11 @@ _.extend(Executor.prototype, {
                 this.logger.error('Failed: %s', stderr);
                 this.logger.error('Result: %s', error.code);
                 this.logger.error(error);
-            }
-
-            if (tmpfile) {
-                fs.unlinkSync(tmpfile);
+                console.error(error);
+            } else {
+                if (tmpfile) {
+                    fs.unlinkSync(tmpfile);
+                }
             }
 
             callback(error ? error.code : RESULT.ACKNOWLEDGEMENT);
