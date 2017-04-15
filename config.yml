@@ -1,4 +1,10 @@
 default:
+    daemon:
+        # user: "www"
+        # group: "www"
+        # silent: true
+        cwd: 'c:\git\amqp-to-php-adapter'
+
     logger:
         error_log: 'logs/filelog-error.log'
         info_log: 'logs/filelog-info.log'

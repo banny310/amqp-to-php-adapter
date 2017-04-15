@@ -1,19 +1,21 @@
-/* 
- * Copyright 2017 Szymon.
- *
- * Licensed under the inOneCar.com license, Version 1.0 (the "License");
+/**
+ * Created by sbanas on 15.04.2017.
  */
-
 'use strict';
-const daemon = require("daemonize2").setup({
+
+const _ = require('lodash');
+const yamlConfig = require('yaml-config');
+const config = yamlConfig.readConfig('./config.yml');
+
+const defaultConfig = {
     main: "server.js",
     name: "server",
     pidfile: "server.pid",
-    //user: "www",
-    //group: "www",
-    //silent: true
-    cwd: "/users/developer/dev.otodojazd.pl/aws"
-});
+};
+
+//noinspection JSUnresolvedVariable
+const daemon = require("daemonize2")
+    .setup(_.extend({}, defaultConfig, config.daemon));
 
 if (process.getuid && process.getuid() !== 0) {
     console.log("Expected to run as root");
