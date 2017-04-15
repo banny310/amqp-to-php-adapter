@@ -30,6 +30,6 @@ default:
             connection:       default
             exchange_options: {name: 'photo-queue', type: direct}
             queue_options:    {name: 'photo-queue', durable: true, autoDelete: false}
-            execute:          {command: 'php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression', cwd: '/var/www', compression: true, properties: true}
+            execute:          {command: 'echo "{message}" | php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression', cwd: '/var/www', base64encode: true, compression: true, properties: true}
             error_log:        'logs/upload-photo-error.log'
             info_log:         'logs/upload-photo-info.log'

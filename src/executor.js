@@ -9,6 +9,13 @@ const Request = require('./../src/request');
 const zlib = require('zlib');
 const RESULT = require('./../src/result');
 
+const defaultExecuteOptions = {
+    command : null,
+    compression : false,
+    properties : false,
+    base64encode : false
+};
+
 const defaultExecProperties = {
     encoding: 'UTF-8',
     timeout: 300
@@ -16,7 +23,7 @@ const defaultExecProperties = {
 
 function Executor(message, execute, endpoint, logger) {
     this.message = message;
-    this.execute = execute;
+    this.execute = _.extend(defaultExecuteOptions, execute);
     this.endpoint = endpoint;
     this.logger = logger;
 }
@@ -44,7 +51,7 @@ _.extend(Executor.prototype, {
         //noinspection JSUnresolvedVariable
         let payload = (this.execute.properties)
             ? JSON.stringify({
-                body: this.message.body,
+                body: this.message.body.data.toString(),
                 properties: this.message.headers
             })
             : this.message.body;
@@ -53,12 +60,23 @@ _.extend(Executor.prototype, {
         if (this.execute.compression) {
             payload = zlib.gzipSync(new Buffer(payload));
         }
-        //noinspection JSUnresolvedVariable
-        const cmd = this.execute.command + ' ' + new Buffer(payload).toString('base64');
-        const options = _.extend({}, defaultExecProperties, this.execute);
+
+        if (this.execute.base64encode) {
+            payload = new Buffer(payload).toString('base64')
+        }
 
         //noinspection JSUnresolvedVariable
-        this.logger.info('Executing command: %s', this.execute.command + ' {message}');
+        this.logger.info('Executing command: %s', this.execute.command);
+
+        //noinspection JSUnresolvedVariable
+        let cmd = this.execute.command;
+        if (cmd.indexOf('{message}')) {
+            cmd = cmd.replace('{message}', payload);
+        } else {
+            cmd = cmd + ' ' + payload;
+        }
+
+        const options = _.extend({}, defaultExecProperties, this.execute);
 
         exec(cmd, options, (error, stdout, stderr) => {
             this.logger.info('Output: %s', stdout);
