@@ -5,7 +5,7 @@
  */
 
 'use strict';
-var daemon = require("daemonize2").setup({
+const daemon = require("daemonize2").setup({
     main: "server.js",
     name: "server",
     pidfile: "server.pid",
@@ -15,7 +15,7 @@ var daemon = require("daemonize2").setup({
     cwd: "/users/developer/dev.otodojazd.pl/aws"
 });
 
-if (process.getuid() !== 0) {
+if (process.getuid && process.getuid() !== 0) {
     console.log("Expected to run as root");
     process.exit(1);
 }
@@ -30,7 +30,7 @@ daemon
     .on("stopping", function() {
         console.log("Stopping daemon...");
     })
-    .on("stopped", function(pid) {
+    .on("stopped", function() {
         console.log("Daemon stopped.");
     })
     .on("running", function(pid) {
@@ -73,13 +73,8 @@ switch (process.argv[2]) {
         }
         break;
 
-    case "reload":
-        console.log("Reload.");
-        daemon.sendSignal("SIGUSR1");
-        break;
-
     case "status":
-        var pid = daemon.status();
+        const pid = daemon.status();
         if (pid)
             console.log("Daemon running. PID: " + pid);
         else
@@ -87,5 +82,5 @@ switch (process.argv[2]) {
         break;
     
     default:
-        console.log("Usage: [start|stop|kill|restart|reload|status]");
+        console.log("Usage: [start|stop|kill|restart|status]");
 }
