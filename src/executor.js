@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require("path");
 const zlib = require('zlib');
 const crypto = require('crypto');
-const uuid = require('node-uuid');
+const uuidV4 = require('uuid/v4');
 const exec = require('child_process').exec;
 const Request = require('./../src/request');
 const RESULT = require('./../src/result');
@@ -76,7 +76,7 @@ _.extend(Executor.prototype, {
         //noinspection JSUnresolvedVariable
         let cmd = this.execute.command;
         if (cmd.indexOf('{file}') !== -1) {
-            tmpfile = path.resolve('./tmp/' + uuid.v4() + '.msg');
+            tmpfile = path.resolve('./tmp/' + uuidV4() + '.msg');
             fs.writeFile(tmpfile, payload, (err) => {
                 if (err) {
                     throw new Error(err);
