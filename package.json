@@ -17,6 +17,7 @@
     "daemonize2": "^0.4.2",
     "extend": "^3.0.0",
     "lodash": "^4.17.4",
+    "node-uuid": "^1.4.8",
     "promise": "^7.1.1",
     "util": "^0.10.3",
     "winston": "^2.3.1",

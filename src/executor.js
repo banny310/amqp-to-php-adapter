@@ -5,8 +5,10 @@
 
 const _ = require('lodash');
 const fs = require('fs');
+const path = require("path");
 const zlib = require('zlib');
 const crypto = require('crypto');
+const uuid = require('node-uuid');
 const exec = require('child_process').exec;
 const Request = require('./../src/request');
 const RESULT = require('./../src/result');
@@ -50,6 +52,7 @@ _.extend(Executor.prototype, {
      * Pass message as argument on system command
      */
     processCommand: function (callback) {
+        let tmpfile = null;
         //noinspection JSUnresolvedVariable
         let payload = (this.execute.properties)
             ? JSON.stringify({
@@ -57,14 +60,6 @@ _.extend(Executor.prototype, {
                 properties: this.message.headers
             })
             : this.message.body;
-
-
-        const filename = crypto.createHash('md5').update(payload).digest('hex') + '.msg';
-        fs.writeFile('tmp/' + filename, payload, (err) => {
-            if(err) {
-                this.logger.error(err);
-            }
-        });
 
         //noinspection JSUnresolvedVariable
         if (this.execute.compression) {
@@ -80,8 +75,16 @@ _.extend(Executor.prototype, {
 
         //noinspection JSUnresolvedVariable
         let cmd = this.execute.command;
-        if (cmd.indexOf('{message}') !== -1) {
-            cmd = cmd.replace('{message}', payload);
+        if (cmd.indexOf('{file}') !== -1) {
+            tmpfile = path.resolve('./tmp/' + uuid.v4() + '.msg');
+            fs.writeFile(tmpfile, payload, (err) => {
+                if (err) {
+                    throw new Error(err);
+                }
+            });
+            cmd = cmd.replace('{file}', tmpfile);
+        } else if (cmd.indexOf('{content}') !== -1) {
+            cmd = cmd.replace('{content}', payload);
         } else {
             cmd = cmd + ' ' + payload;
         }
@@ -94,6 +97,10 @@ _.extend(Executor.prototype, {
                 this.logger.error('Failed: %s', stderr);
                 this.logger.error('Result: %s', error.code);
                 this.logger.error(error);
+            }
+
+            if (tmpfile) {
+                fs.unlinkSync(tmpfile);
             }
 
             callback(error ? error.code : RESULT.ACKNOWLEDGEMENT);
