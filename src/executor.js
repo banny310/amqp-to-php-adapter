@@ -99,6 +99,8 @@ _.extend(Executor.prototype, {
                 this.logger.error(error);
                 console.error(error);
             } else {
+                // command successful executed
+                // remove temp file if saved
                 if (tmpfile) {
                     fs.unlinkSync(tmpfile);
                 }
