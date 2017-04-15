@@ -4,9 +4,11 @@
 'use strict';
 
 const _ = require('lodash');
+const fs = require('fs');
+const zlib = require('zlib');
+const crypto = require('crypto');
 const exec = require('child_process').exec;
 const Request = require('./../src/request');
-const zlib = require('zlib');
 const RESULT = require('./../src/result');
 
 const defaultExecuteOptions = {
@@ -55,6 +57,14 @@ _.extend(Executor.prototype, {
                 properties: this.message.headers
             })
             : this.message.body;
+
+
+        const filename = crypto.createHash('md5').update(payload).digest('hex') + '.msg';
+        fs.writeFile('tmp/' + filename, payload, (err) => {
+            if(err) {
+                this.logger.error(err);
+            }
+        });
 
         //noinspection JSUnresolvedVariable
         if (this.execute.compression) {
