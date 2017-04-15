@@ -7,11 +7,13 @@ const yamlConfig = require('yaml-config');
 const App = require('./src/app');
 const LogProvider = require('./src/log-provider');
 
-const config = yamlConfig.readConfig('./config.yml');
+const env = process.env.NODE_ENV || 'production';
+const config = yamlConfig.readConfig('./config.yml', env);
 const logProvider = new LogProvider(config.logger);
 const logger = logProvider.get();
 
 logger.info('Starting...');
+logger.info('Loading config...%s', env);
 const app = new App(config, logProvider);
 app.run();
 

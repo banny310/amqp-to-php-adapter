@@ -70,7 +70,7 @@ _.extend(Executor.prototype, {
 
         //noinspection JSUnresolvedVariable
         let cmd = this.execute.command;
-        if (cmd.indexOf('{message}')) {
+        if (cmd.indexOf('{message}') !== -1) {
             cmd = cmd.replace('{message}', payload);
         } else {
             cmd = cmd + ' ' + payload;
@@ -83,6 +83,7 @@ _.extend(Executor.prototype, {
             if (error) {
                 this.logger.error('Failed: %s', stderr);
                 this.logger.error('Result: %s', error.code);
+                this.logger.error(error);
             }
 
             callback(error ? error.code : RESULT.ACKNOWLEDGEMENT);

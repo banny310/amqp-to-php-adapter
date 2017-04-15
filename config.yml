@@ -24,7 +24,7 @@ default:
             queue_options:    {name: 'mail-queue', durable: true, autoDelete: false}
             # endpoint:         'http://example.com/consume --env development'
             execute:
-                command: 'echo "{message}" | php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression'
+                command: 'echo "{message}" | php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression --base64encode'
                 cwd: '/var/www'
                 base64encode: true
                 compression: true
