@@ -1,0 +1,12 @@
+{
+  "name": "php-consumer",
+  "version": "1.0.0",
+  "description": "Example php consumer",
+  "main": "index.js",
+  "author": "Szymon Banaś <sb@impetbhp.pl>",
+  "license": "MIT",
+  "dependencies": {
+    "node-php-server": "^0.1.2",
+    "daemonize2": "^0.4.2"
+  }
+}

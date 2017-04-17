@@ -6,6 +6,7 @@
 const _ = require('lodash');
 const url = require('url');
 const Promise = require('promise');
+const hydrate = require('./../src/util').hydrate;
 
 const defaultClientProperties = {
     method: 'POST',
@@ -74,8 +75,8 @@ _.extend(Request.prototype, {
      */
     createPostData: function (message) {
         return require('querystring').stringify({
-            message: message.body.data.toString(),
-            properties: JSON.stringify(message.headers),
+            body: message.body.data.toString(),
+            properties: JSON.stringify(hydrate(message.properties))
         });
     },
 
@@ -86,7 +87,7 @@ _.extend(Request.prototype, {
      * @returns {Object}
      */
     createHttpOptions: function (postData) {
-        let parsed = _.toPlainObject(url.parse(this.url));
+        let parsed = hydrate(url.parse(this.url));
         let httpOptions = _.extendWith(parsed, defaultClientProperties, (objValue, srcValue) => {
             return _.isNull(objValue) ? srcValue : objValue;
         });

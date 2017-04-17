@@ -31,7 +31,7 @@ _.extend(App.prototype, {
         const consumer = new Consumer(name, config, this.connection, logger);
         consumer.consume((message) => {
             //this.logger.info('Message arrived', message);
-            //inspect(message);
+            //console.log(message);
         });
         this.consumers[name] = consumer;
     },

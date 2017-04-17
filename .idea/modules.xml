@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/php-to-amqp-adapter.iml" filepath="$PROJECT_DIR$/.idea/php-to-amqp-adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/amqp-to-php-adapter.iml" filepath="$PROJECT_DIR$/.idea/amqp-to-php-adapter.iml" />
+      <module fileurl="file://C:\git\amqp-to-php-adapter\.idea\php-to-amqp-adapter.iml" filepath="C:\git\amqp-to-php-adapter\.idea\php-to-amqp-adapter.iml" />
     </modules>
   </component>
 </project>

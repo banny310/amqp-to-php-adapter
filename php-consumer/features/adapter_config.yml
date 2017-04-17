@@ -1,0 +1,76 @@
+default:
+    daemon:
+        # user: "www"
+        # group: "www"
+        # silent: true
+        cwd: '/var/www'
+
+    logger:
+        error_log: 'logs/behat-error.log'
+        info_log: 'logs/behat-info.log'
+
+    connections:
+        default:
+            host:     'localhost'
+            port:     5672
+            user:     'guest'
+            password: 'guest'
+            vhost:    '/'
+
+    consumers:
+        endpoint:
+            connection:       default
+            queue_options:    {name: 'behat_endpoint', durable: true, autoDelete: false}
+            endpoint:         'http://localhost:8011'
+
+        command_without_compression:
+            connection:       default
+            queue_options:    {name: 'behat_command_without_compression', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out'
+                cwd: '/var/www/php-consumer'
+                properties: false
+
+        command_with_props_without_compression:
+            connection:       default
+            queue_options:    {name: 'behat_command_with_props_without_compression', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out'
+                cwd: '/var/www/php-consumer'
+                properties: true
+
+        command_with_gzcompress:
+            connection:       default
+            queue_options:    {name: 'behat_command_with_gzcompress', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out --compression gzcompress'
+                cwd: '/var/www/php-consumer'
+                compression: gzcompress
+                properties: false
+
+        command_with_props_gzcompress:
+            connection:       default
+            queue_options:    {name: 'behat_command_with_props_gzcompress', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out --compression gzcompress'
+                cwd: '/var/www/php-consumer'
+                compression: gzcompress
+                properties: true
+
+        command_with_gzdeflate:
+            connection:       default
+            queue_options:    {name: 'behat_command_with_gzdeflate', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out --compression gzdeflate'
+                cwd: '/var/www/php-consumer'
+                compression: gzdeflate
+                properties: false
+
+        command_with_props_gzdeflate:
+            connection:       default
+            queue_options:    {name: 'behat_command_with_props_gzdeflate', durable: true, autoDelete: false}
+            execute:
+                command: 'php console.php app:consumer --output features/tmp/result.out --compression gzdeflate'
+                cwd: '/var/www/php-consumer'
+                compression: gzdeflate
+                properties: true

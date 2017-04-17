@@ -9,20 +9,20 @@ const path = require("path");
 const zlib = require('zlib');
 const crypto = require('crypto');
 const uuidV4 = require('uuid/v4');
-const exec = require('child_process').exec;
+const runner = require("child_process");
 const Request = require('./../src/request');
 const RESULT = require('./../src/result');
+const hydrate = require('./../src/util').hydrate;
 
 const defaultExecuteOptions = {
     command : null,
     compression : false,
-    properties : false,
-    base64encode : false
+    properties : false
 };
 
 const defaultExecProperties = {
     encoding: 'UTF-8',
-    timeout: 300
+    timeout: 300000
 };
 
 function Executor(message, execute, endpoint, logger) {
@@ -57,17 +57,26 @@ _.extend(Executor.prototype, {
         let payload = (this.execute.properties)
             ? JSON.stringify({
                 body: this.message.body.data.toString(),
-                properties: this.message.headers
+                properties: hydrate(this.message.properties)
             })
-            : this.message.body;
+            : this.message.body.data.toString();
+
+        //console.log(payload);
 
         //noinspection JSUnresolvedVariable
         if (this.execute.compression) {
-            payload = zlib.gzipSync(new Buffer(payload));
-        }
-
-        if (this.execute.base64encode) {
-            payload = new Buffer(payload).toString('base64')
+            switch (this.execute.compression) {
+                case 'gzcompress':
+                    payload = zlib.deflateSync(new Buffer(payload)).toString('base64');
+                    break;
+                case 'gzdeflate':
+                    payload = zlib.deflateRawSync(new Buffer(payload)).toString('base64');
+                    break;
+                default:
+                    throw new Error('Unrecognised compression algorithm "%s"', this.execute.compression);
+            }
+        } else {
+            payload = new Buffer(payload).toString('base64');
         }
 
         //noinspection JSUnresolvedVariable
@@ -91,13 +100,12 @@ _.extend(Executor.prototype, {
 
         const options = _.extend({}, defaultExecProperties, this.execute);
 
-        exec(cmd, options, (error, stdout, stderr) => {
-            this.logger.info('Output: %s', stdout);
+        runner.exec(cmd, options, (error, stdout, stderr) => {
+            this.logger.info("Output: %s", stdout);
             if (error) {
                 this.logger.error('Failed: %s', stderr);
                 this.logger.error('Result: %s', error.code);
                 this.logger.error(error);
-                console.error(error);
             } else {
                 // command successful executed
                 // remove temp file if saved

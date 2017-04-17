@@ -1,0 +1,26 @@
+{
+  "name": "banny310/amqp-to-php-adapter/php-consumer",
+  "description": "Example PHP consumer for AMQP to PHP adapter",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Szymon Banas",
+      "email": "sb@impetbhp.pl"
+    }
+  ],
+  "require": {
+    "symfony/console": "^3.2",
+    "symfony/var-dumper": "^3.2",
+    "php-amqplib/php-amqplib": "^2.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src",
+      "App\\Behat\\": "features/src"
+    }
+  },
+  "require-dev": {
+    "behat/behat": "^3.3",
+    "phpunit/phpunit": "^6.1"
+  }
+}

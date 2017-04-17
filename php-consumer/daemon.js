@@ -3,20 +3,14 @@
  */
 'use strict';
 
-const _ = require('lodash');
-const yamlConfig = require('yaml-config');
-const config = yamlConfig.readConfig('./config.yml');
-
-const defaultConfig = {
-    main: "server.js",
-    name: "server",
-    pidfile: "server.pid",
-    silent: false
-};
-
 //noinspection JSUnresolvedVariable
 const daemon = require("daemonize2")
-    .setup(_.extend({}, defaultConfig, config.daemon));
+    .setup({
+        main: "index.js",
+        name: "server",
+        pidfile: "server.pid",
+        silent: false
+    });
 
 if (process.getuid && process.getuid() !== 0) {
     console.log("Expected to run as root");

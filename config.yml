@@ -3,7 +3,7 @@ default:
         # user: "www"
         # group: "www"
         # silent: true
-        cwd: '/home/vagrant/amqp-to-php-adapter'
+        cwd: '/var/www'
 
     logger:
         error_log: 'logs/filelog-error.log'
@@ -11,7 +11,7 @@ default:
 
     connections:
         default:
-            host:     'dev.inonecar.com'
+            host:     'localhost'
             port:     5672
             user:     'guest'
             password: 'guest'
@@ -20,14 +20,23 @@ default:
     consumers:
         mail_sender:
             connection:       default
-            exchange_options: {name: 'mail-queue', type: direct}
+            # exchange_options: {name: 'mail-queue', type: direct}
             queue_options:    {name: 'mail-queue', durable: true, autoDelete: false}
-            # endpoint:         'http://example.com/consume --env development'
             execute:
-                command: 'cat {file} | php bin/console.php rabbitmq-cli:mail-consumer --env development-vg --compression --base64encode'
-                cwd: '/var/www'
-                base64encode: true
-                compression: true
+                command: 'cat {file} | php console.php app:consumer --compression gzcompress'
+                cwd: '/var/www/php-consumer'
+                # enable compression for passed argument
+                # allowed options are:
+                # - gzcompress - decode with gzuncompress in php
+                # - gzdeflate - decode with gzinflate in php
+                compression: gzcompress # [ gzcompress, gzdeflate ]
                 properties: true
             error_log:        'logs/mail-sender-error.log'
             info_log:         'logs/mail-sender-info.log'
+
+        endpoint:
+            connection:       default
+            queue_options:    {name: 'endpoint', durable: true, autoDelete: false}
+            endpoint:         'http://localhost:8011'
+            # error_log:        'logs/mail-sender-error.log'
+            # info_log:         'logs/mail-sender-info.log'

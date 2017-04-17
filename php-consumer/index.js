@@ -1,0 +1,27 @@
+/**
+ * Created by sbanas on 17.04.2017.
+ */
+const phpServer = require('node-php-server');
+
+// Create a PHP Server
+phpServer.createServer({
+    port: 8011,
+    hostname: '127.0.0.1',
+    base: '.',
+    keepalive: false,
+    open: false,
+    bin: 'php',
+    router: __dirname + '/server.php'
+});
+
+
+process.on("uncaughtException", function (err) {
+    console.log("Uncaught exception...");
+    console.log(err.stack);
+});
+
+process.once("SIGTERM", function () {
+    // Close server
+    console.log("Kill signal received...");
+    phpServer.close();
+});

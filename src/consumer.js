@@ -35,14 +35,17 @@ _.extend(Consumer.prototype, {
 
                 const message = {
                     body: body,
-                    headers: headers,
-                    deliveryInfo: deliveryInfo,
-                    messageObject: messageObject
+                    properties: deliveryInfo
                 };
 
                 callback(message);
 
-                const executor = new Executor(message, this.config.execute, this.config.endpoint, this.logger);
+                const executor = new Executor(
+                    message,
+                    this.config.execute,
+                    this.config.endpoint,
+                    this.logger
+                );
                 executor.process((result) => {
                     try {
                         this.handleResult(messageObject, result);
