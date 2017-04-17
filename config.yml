@@ -20,23 +20,29 @@ default:
     consumers:
         mail_sender:
             connection:       default
-            # exchange_options: {name: 'mail-queue', type: direct}
             queue_options:    {name: 'mail-queue', durable: true, autoDelete: false}
             execute:
-                command: 'cat {file} | php console.php app:consumer --compression gzcompress'
+                # Command to be executed
+                # Placeholders:
+                # - {content} - will be replaced with base64 encoded message body
+                # - {file} - will be replaced with file with message content
+                command: 'php bin/console.php amqp:mail-sender --compression gzdeflate {content}'
+                # Directory within command will be executed
                 cwd: '/var/www/php-consumer'
-                # enable compression for passed argument
+                # Enable compression for passed argument (default: no compression)
                 # allowed options are:
                 # - gzcompress - decode with gzuncompress in php
                 # - gzdeflate - decode with gzinflate in php
-                compression: gzcompress # [ gzcompress, gzdeflate ]
+                compression: gzdeflate # [ gzcompress, gzdeflate ]
+                # Pass also message properties in {content}
                 properties: true
+            # Optional log files dedicated for this consumer
             error_log:        'logs/mail-sender-error.log'
             info_log:         'logs/mail-sender-info.log'
 
         endpoint:
             connection:       default
             queue_options:    {name: 'endpoint', durable: true, autoDelete: false}
+            # Pass message to endpoint
+            # Request will contain POST payload with 'body' and 'properties'
             endpoint:         'http://localhost:8011'
-            # error_log:        'logs/mail-sender-error.log'
-            # info_log:         'logs/mail-sender-info.log'

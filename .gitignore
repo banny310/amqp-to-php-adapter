@@ -60,6 +60,7 @@ typings/
 
 # Idea
 .idea
+.idea/*
 
 .vagrant
 

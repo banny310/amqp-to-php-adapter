@@ -82,7 +82,7 @@ class AdapterFeatureContext implements Context
         foreach (json_decode($res['stdout']) as $queue) {
             if (strpos($queue->name, 'behat_') === 0) {
                 echo "Queue '{$queue->name}' removed\n";
-                self::exec('rabbitmqadmin -u guest -p guest delete queue name=' . $queue->name);
+                self::exec('sudo rabbitmqadmin -u guest -p guest delete queue name=' . $queue->name);
             }
         }
     }

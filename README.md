@@ -44,3 +44,137 @@ node server.js
 ```
 
 ## Configuration ##
+
+Example configuration
+
+```yaml
+default:
+    daemon:
+        # user: "www"
+        # group: "www"
+        # silent: true
+        cwd: '/var/www'
+
+    logger:
+        error_log: 'logs/filelog-error.log'
+        info_log: 'logs/filelog-info.log'
+
+    connections:
+        default:
+            host:     'localhost'
+            port:     5672
+            user:     'guest'
+            password: 'guest'
+            vhost:    '/'
+
+    consumers:
+        mail_sender:
+            connection:       default
+            queue_options:    {name: 'mail-queue', durable: true, autoDelete: false}
+            execute:
+                # Command to be executed
+                # Placeholders:
+                # - {content} - will be replaced with base64 encoded message body
+                # - {file} - will be replaced with file with message content
+                command: 'php bin/console.php amqp:consumer --compression gzdeflate {content}'
+                # Directory within command will be executed
+                cwd: '/var/www/php-consumer'
+                # Enable compression for passed argument (default: no compression)
+                # allowed options are:
+                # - gzcompress - decode with gzuncompress in php
+                # - gzdeflate - decode with gzinflate in php
+                compression: gzdeflate # [ gzcompress, gzdeflate ]
+                # Pass also message properties in {content}
+                properties: true
+            # Optional log files dedicated for this consumer
+            error_log:        'logs/mail-sender-error.log'
+            info_log:         'logs/mail-sender-info.log'
+
+        endpoint:
+            connection:       default
+            queue_options:    {name: 'endpoint', durable: true, autoDelete: false}
+            # Pass message to endpoint
+            # Request will contain POST payload with 'body' and 'properties'
+            endpoint:         'http://localhost:8011'
+```
+
+[See config.yml for more details](config.yml)
+
+## Consumer ##
+
+Example PHP consumer as Symfony console command
+
+```php
+class AmqpConsumerCommand extends Command
+{
+    const ACKNOWLEDGEMENT = 0;
+    const REJECT = 3;
+    const REJECT_AND_REQUEUE = 4;
+
+    /**
+     * Configures the current command.
+     */
+    protected function configure()
+    {
+        $this
+            ->setName('app:consumer')
+            ->addArgument('message', InputArgument::OPTIONAL)
+            ->addOption('compression', 'c', InputOption::VALUE_REQUIRED)
+            ->addOption('output', 'o', InputOption::VALUE_OPTIONAL)
+        ;
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        // get content from stdin or argument
+        if ($data = $input->getArgument('message')) {
+            $data = base64_decode($data, true);
+        } else if (0 === ftell(STDIN)) {
+            $data = '';
+            while (!feof(STDIN)) {
+                $data .= fread(STDIN, 1024);
+            }
+            $data = base64_decode($data, true);
+        } else {
+            throw new \InvalidArgumentException("Please provide a message as argument or pipe it to STDIN.");
+        }
+
+        // uncompress
+        $compression = $input->getOption('compression');
+        switch($compression) {
+            case "gzcompress":
+                $data = gzuncompress($data);
+                if (false === $data) {
+                    throw new \InvalidArgumentException("Decompression failed");
+                }
+                break;
+            case "gzdeflate":
+                $data = gzinflate($data);
+                if (false === $data) {
+                    throw new \InvalidArgumentException("Decompression failed");
+                }
+                break;
+        }
+
+        //$data = json_decode($data, true);
+
+        $output = $input->getOption('output');
+        if ($output) {
+            file_put_contents($output, $data);
+        }
+
+        return self::ACKNOWLEDGEMENT;
+    }
+}
+```
+
+## Tests ##
+
+There are several behat tests in ./php-consumer and prepared for them vagrant environment
+
+```bash
+vagrant up
+vagrant ssh
+cd /var/www/php-consumer
+vendor/bin/behat
+```

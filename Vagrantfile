@@ -23,12 +23,14 @@ add-apt-repository ppa:ondrej/php
 apt-get update
 
 # Install PHP
-apt-get install -y php7.1 php7.1-bcmath php7.1-bz2 php7.1-cli php7.1-curl php7.1-intl php7.1-json php7.1-mbstring php7.1-opcache php7.1-soap php7.1-sqlite3 php7.1-xml php7.1-xsl php7.1-zip php7.1-mysql php7.1-pgsql php7.1-mcrypt php-amqp
+apt-get install -y php7.1-fpm php7.1-bcmath php7.1-bz2 php7.1-cli php7.1-curl php7.1-intl php7.1-json php7.1-mbstring php7.1-opcache php7.1-soap php7.1-sqlite3 php7.1-xml php7.1-xsl php7.1-zip php7.1-mysql php7.1-pgsql php7.1-mcrypt php-amqp
 
 # Install node v4 and NPM package manager
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-apt-get install -y nodejs npm
+apt-get install -y nodejs
 cd /var/www
+npm install
+cd /var/www/php-consumer
 npm install
 
 # Install Composer and resolve its dependencies
@@ -44,7 +46,11 @@ composer update
 apt-get install -y rabbitmq-server
 rabbitmq-plugins enable rabbitmq_management
 service rabbitmq-server restart
-curl http://localhost:15672/cli/rabbitmqadmin > /usr/local/bin/rabbitmqadmin
+cd /home/vagrant
+curl http://localhost:15672/cli/rabbitmqadmin > rabbitmqadmin
+sudo cp ./rabbitmqadmin /usr/local/bin/rabbitmqadmin
+sudo chmod +x /usr/local/bin/rabbitmqadmin
+
 
 echo "** Visit http://localhost:15672 in your browser for view rabbitmq management console **"
 SCRIPT

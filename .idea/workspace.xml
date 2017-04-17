@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9890ec03-59e9-4087-beb4-19e0c3a61968" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tmp/.gitignore" afterPath="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/amqp-to-php-adapter.iml" afterPath="$PROJECT_DIR$/.idea/amqp-to-php-adapter.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vagrantfile" afterPath="$PROJECT_DIR$/Vagrantfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.yml" afterPath="$PROJECT_DIR$/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/daemon.js" afterPath="$PROJECT_DIR$/daemon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/consumer.js" afterPath="$PROJECT_DIR$/src/consumer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/executor.js" afterPath="$PROJECT_DIR$/src/executor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/request.js" afterPath="$PROJECT_DIR$/src/request.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" afterPath="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" afterPath="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/tmp/result.out" afterPath="$PROJECT_DIR$/php-consumer/features/tmp/result.out" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +23,76 @@
       <file leaf-file-name="Vagrantfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vagrantfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="76" />
+            <state relative-caret-position="748">
+              <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="730">
+                <caret line="178" column="16" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
+                <folding>
+                  <marker date="1492473229688" expanded="true" signature="1154:3056" ph="default: &lt;4 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1167:1266" ph="daemon: &lt;1 key&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1256:1266" ph="/var/www" />
+                  <marker date="1492473229688" expanded="true" signature="1272:1365" ph="logger: &lt;2 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1299:1323" ph="logs/file…-error.log" />
+                  <marker date="1492473229688" expanded="true" signature="1342:1365" ph="logs/file…g-info.log" />
+                  <marker date="1492473229688" expanded="true" signature="1371:1547" ph="connections: &lt;1 key&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1392:1547" ph="default: &lt;5 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1423:1434" ph="localhost" />
+                  <marker date="1492473229688" expanded="true" signature="1457:1461" ph="5672" />
+                  <marker date="1492473229688" expanded="true" signature="1484:1491" ph="guest" />
+                  <marker date="1492473229688" expanded="true" signature="1514:1521" ph="guest" />
+                  <marker date="1492473229688" expanded="true" signature="1544:1547" ph="/" />
+                  <marker date="1492473229688" expanded="true" signature="1553:3056" ph="consumers: &lt;2 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1572:2746" ph="mail_sender: &lt;5 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1615:1622" ph="default" />
+                  <marker date="1492473229688" expanded="true" signature="1635:1707" ph="queue_options: {3 keys}" />
+                  <marker date="1492473229688" expanded="true" signature="1660:1672" ph="mail-queue" />
+                  <marker date="1492473229688" expanded="true" signature="1683:1687" ph="true" />
+                  <marker date="1492473229688" expanded="true" signature="1701:1706" ph="false" />
+                  <marker date="1492473229688" expanded="true" signature="1720:2568" ph="execute: &lt;4 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="1986:2055" ph="php bin/c… {content}" />
+                  <marker date="1492473229688" expanded="true" signature="2137:2160" ph="/var/www/…p-consumer" />
+                  <marker date="1492473229688" expanded="true" signature="2438:2447" ph="gzdeflate" />
+                  <marker date="1492473229688" expanded="true" signature="2564:2568" ph="true" />
+                  <marker date="1492473229688" expanded="true" signature="2660:2688" ph="logs/mail…-error.log" />
+                  <marker date="1492473229688" expanded="true" signature="2719:2746" ph="logs/mail…r-info.log" />
+                  <marker date="1492473229688" expanded="true" signature="2756:3056" ph="endpoint: &lt;3 keys&gt;" />
+                  <marker date="1492473229688" expanded="true" signature="2796:2803" ph="default" />
+                  <marker date="1492473229688" expanded="true" signature="2816:2886" ph="queue_options: {3 keys}" />
+                  <marker date="1492473229688" expanded="true" signature="2841:2851" ph="endpoint" />
+                  <marker date="1492473229688" expanded="true" signature="2862:2866" ph="true" />
+                  <marker date="1492473229688" expanded="true" signature="2880:2885" ph="false" />
+                  <marker date="1492473229688" expanded="true" signature="3033:3056" ph="http://lo…lhost:8011" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AmqpConsumerCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php-consumer/src/AmqpConsumerCommand.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-327">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -45,7 +108,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php-consumer/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -58,8 +121,8 @@
       <file leaf-file-name="AdapterFeatureContext.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="66" column="40" lean-forward="false" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
+            <state relative-caret-position="576">
+              <caret line="89" column="7" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
               <folding>
                 <element signature="e#7#33#0#PHP" expanded="true" />
               </folding>
@@ -141,12 +204,14 @@
         <option value="$PROJECT_DIR$/php-consumer/features/endpoint.feature" />
         <option value="$PROJECT_DIR$/php-consumer/features/command.feature" />
         <option value="$PROJECT_DIR$/php-consumer/behat.yml" />
-        <option value="$PROJECT_DIR$/config.yml" />
         <option value="$PROJECT_DIR$/php-consumer/public/index.php" />
         <option value="$PROJECT_DIR$/php-consumer/features/adapter_config.yml" />
-        <option value="$PROJECT_DIR$/Vagrantfile" />
-        <option value="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" />
         <option value="$PROJECT_DIR$/php-consumer/features/adapter.feature" />
+        <option value="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" />
+        <option value="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" />
+        <option value="$PROJECT_DIR$/Vagrantfile" />
+        <option value="$PROJECT_DIR$/config.yml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -212,7 +277,71 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tmp" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="php-consumer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-consumer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amqp-to-php-adapter" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-consumer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="features" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -231,6 +360,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\git\amqp-to-php-adapter\tmp" />
       <recent name="C:\git\amqp-to-php-adapter\php-consumer\features\bootstrap" />
       <recent name="C:\git\amqp-to-php-adapter\php-consumer\features" />
       <recent name="C:\git\amqp-to-php-adapter\php-consumer" />
@@ -358,12 +488,12 @@
       <option name="presentableId" value="Default" />
       <updated>1492174138617</updated>
       <workItem from="1492433142958" duration="53000" />
-      <workItem from="1492433504415" duration="24266000" />
+      <workItem from="1492433504415" duration="28086000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24319000" />
+    <option name="totallyTimeSpent" value="28139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
@@ -554,17 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/executor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="49" />
-          <folding>
-            <marker date="1492454989547" expanded="true" signature="3142:3160" ph="{...}" />
-            <marker date="1492454989547" expanded="true" signature="3977:4062" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php-consumer/public/consume.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -673,22 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vagrantfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php-consumer/rabbitmqadmin">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13816">
@@ -737,16 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="66" column="40" lean-forward="false" selection-start-line="66" selection-start-column="40" selection-end-line="66" selection-end-column="40" />
-          <folding>
-            <element signature="e#7#33#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php-consumer/features/adapter.feature">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1780">
@@ -760,6 +853,113 @@
         <state relative-caret-position="374">
           <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php-consumer/features/tmp/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="89" column="7" lean-forward="true" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
+          <folding>
+            <element signature="e#7#33#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vagrantfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/executor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="49" />
+          <folding>
+            <marker date="1492454989547" expanded="true" signature="3142:3160" ph="{...}" />
+            <marker date="1492454989547" expanded="true" signature="3977:4062" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php-consumer/src/AmqpConsumerCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-327">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="730">
+            <caret line="178" column="16" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
+            <folding>
+              <marker date="1492473229688" expanded="true" signature="1154:3056" ph="default: &lt;4 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1167:1266" ph="daemon: &lt;1 key&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1256:1266" ph="/var/www" />
+              <marker date="1492473229688" expanded="true" signature="1272:1365" ph="logger: &lt;2 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1299:1323" ph="logs/file…-error.log" />
+              <marker date="1492473229688" expanded="true" signature="1342:1365" ph="logs/file…g-info.log" />
+              <marker date="1492473229688" expanded="true" signature="1371:1547" ph="connections: &lt;1 key&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1392:1547" ph="default: &lt;5 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1423:1434" ph="localhost" />
+              <marker date="1492473229688" expanded="true" signature="1457:1461" ph="5672" />
+              <marker date="1492473229688" expanded="true" signature="1484:1491" ph="guest" />
+              <marker date="1492473229688" expanded="true" signature="1514:1521" ph="guest" />
+              <marker date="1492473229688" expanded="true" signature="1544:1547" ph="/" />
+              <marker date="1492473229688" expanded="true" signature="1553:3056" ph="consumers: &lt;2 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1572:2746" ph="mail_sender: &lt;5 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1615:1622" ph="default" />
+              <marker date="1492473229688" expanded="true" signature="1635:1707" ph="queue_options: {3 keys}" />
+              <marker date="1492473229688" expanded="true" signature="1660:1672" ph="mail-queue" />
+              <marker date="1492473229688" expanded="true" signature="1683:1687" ph="true" />
+              <marker date="1492473229688" expanded="true" signature="1701:1706" ph="false" />
+              <marker date="1492473229688" expanded="true" signature="1720:2568" ph="execute: &lt;4 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="1986:2055" ph="php bin/c… {content}" />
+              <marker date="1492473229688" expanded="true" signature="2137:2160" ph="/var/www/…p-consumer" />
+              <marker date="1492473229688" expanded="true" signature="2438:2447" ph="gzdeflate" />
+              <marker date="1492473229688" expanded="true" signature="2564:2568" ph="true" />
+              <marker date="1492473229688" expanded="true" signature="2660:2688" ph="logs/mail…-error.log" />
+              <marker date="1492473229688" expanded="true" signature="2719:2746" ph="logs/mail…r-info.log" />
+              <marker date="1492473229688" expanded="true" signature="2756:3056" ph="endpoint: &lt;3 keys&gt;" />
+              <marker date="1492473229688" expanded="true" signature="2796:2803" ph="default" />
+              <marker date="1492473229688" expanded="true" signature="2816:2886" ph="queue_options: {3 keys}" />
+              <marker date="1492473229688" expanded="true" signature="2841:2851" ph="endpoint" />
+              <marker date="1492473229688" expanded="true" signature="2862:2866" ph="true" />
+              <marker date="1492473229688" expanded="true" signature="2880:2885" ph="false" />
+              <marker date="1492473229688" expanded="true" signature="3033:3056" ph="http://lo…lhost:8011" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
