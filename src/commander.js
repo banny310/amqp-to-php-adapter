@@ -26,7 +26,7 @@ const defaultExecProperties = {
 
 const COMPRESSOR = {
     GZCOMPRESS : 'gzcompress',
-    GZDEFLATE : 'zgdeflate',
+    GZDEFLATE : 'gzdeflate',
     NONE : 'none'
 };
 
