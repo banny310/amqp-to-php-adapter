@@ -30,7 +30,7 @@ Install npm dependencies
 npm install
 ```
 
-Configure config.yml
+## Run ##
 
 Run as daemon
 
@@ -41,6 +41,17 @@ or run in console
 
 ```bash
 node server.js
+```
+
+Command line options
+```
+--config /var/www/config.yml (default: ./config.yml)
+--env name (default: production)
+```
+
+Example:
+```bash
+node daemon.js start --config /var/www/config.yml --env development
 ```
 
 ## Configuration ##
@@ -75,17 +86,22 @@ default:
                 # Command to be executed
                 # Placeholders:
                 # - {content} - will be replaced with base64 encoded message body
-                # - {file} - will be replaced with file with message content
-                command: 'php bin/console.php amqp:consumer --compression gzdeflate {content}'
+                # - {file} - will be replaced with file with stored {content}
+                command: 'php bin/console.php amqp:mail-sender --compression gzdeflate {content}'
+                # command: 'cat {file} | php bin/console.php amqp:mail-sender --compression gzdeflate'
+
                 # Directory within command will be executed
                 cwd: '/var/www/php-consumer'
+
                 # Enable compression for passed argument (default: no compression)
                 # allowed options are:
                 # - gzcompress - decode with gzuncompress in php
                 # - gzdeflate - decode with gzinflate in php
                 compression: gzdeflate # [ gzcompress, gzdeflate ]
+
                 # Pass also message properties in {content}
                 properties: true
+                
             # Optional log files dedicated for this consumer
             error_log:        'logs/mail-sender-error.log'
             info_log:         'logs/mail-sender-info.log'
@@ -93,9 +109,21 @@ default:
         endpoint:
             connection:       default
             queue_options:    {name: 'endpoint', durable: true, autoDelete: false}
+
             # Pass message to endpoint
             # Request will contain POST payload with 'body' and 'properties'
             endpoint:         'http://localhost:8011'
+
+# You may provide environment based config
+# All environment configs are inherited from default
+production:
+    connections:
+        default:
+            host:     'rabbitmq.example.com'
+            port:     5672
+            user:     'user'
+            password: 'pass'
+            vhost:    '/'
 ```
 
 [See config.yml for more details](config.yml)

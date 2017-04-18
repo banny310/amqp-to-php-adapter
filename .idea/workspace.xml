@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9890ec03-59e9-4087-beb4-19e0c3a61968" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vagrantfile" afterPath="$PROJECT_DIR$/Vagrantfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.yml" afterPath="$PROJECT_DIR$/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" afterPath="$PROJECT_DIR$/php-consumer/features/bootstrap/AdapterFeatureContext.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" afterPath="$PROJECT_DIR$/php-consumer/features/tmp/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php-consumer/features/tmp/result.out" afterPath="$PROJECT_DIR$/php-consumer/features/tmp/result.out" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +28,8 @@
       <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="53" />
+            <state relative-caret-position="153">
+              <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -44,46 +39,67 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="730">
-                <caret line="178" column="16" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
+              <first_editor relative-caret-position="404">
+                <caret line="53" column="67" lean-forward="false" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
                 <folding>
-                  <marker date="1492473229688" expanded="true" signature="1154:3056" ph="default: &lt;4 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1167:1266" ph="daemon: &lt;1 key&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1256:1266" ph="/var/www" />
-                  <marker date="1492473229688" expanded="true" signature="1272:1365" ph="logger: &lt;2 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1299:1323" ph="logs/file…-error.log" />
-                  <marker date="1492473229688" expanded="true" signature="1342:1365" ph="logs/file…g-info.log" />
-                  <marker date="1492473229688" expanded="true" signature="1371:1547" ph="connections: &lt;1 key&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1392:1547" ph="default: &lt;5 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1423:1434" ph="localhost" />
-                  <marker date="1492473229688" expanded="true" signature="1457:1461" ph="5672" />
-                  <marker date="1492473229688" expanded="true" signature="1484:1491" ph="guest" />
-                  <marker date="1492473229688" expanded="true" signature="1514:1521" ph="guest" />
-                  <marker date="1492473229688" expanded="true" signature="1544:1547" ph="/" />
-                  <marker date="1492473229688" expanded="true" signature="1553:3056" ph="consumers: &lt;2 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1572:2746" ph="mail_sender: &lt;5 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1615:1622" ph="default" />
-                  <marker date="1492473229688" expanded="true" signature="1635:1707" ph="queue_options: {3 keys}" />
-                  <marker date="1492473229688" expanded="true" signature="1660:1672" ph="mail-queue" />
-                  <marker date="1492473229688" expanded="true" signature="1683:1687" ph="true" />
-                  <marker date="1492473229688" expanded="true" signature="1701:1706" ph="false" />
-                  <marker date="1492473229688" expanded="true" signature="1720:2568" ph="execute: &lt;4 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="1986:2055" ph="php bin/c… {content}" />
-                  <marker date="1492473229688" expanded="true" signature="2137:2160" ph="/var/www/…p-consumer" />
-                  <marker date="1492473229688" expanded="true" signature="2438:2447" ph="gzdeflate" />
-                  <marker date="1492473229688" expanded="true" signature="2564:2568" ph="true" />
-                  <marker date="1492473229688" expanded="true" signature="2660:2688" ph="logs/mail…-error.log" />
-                  <marker date="1492473229688" expanded="true" signature="2719:2746" ph="logs/mail…r-info.log" />
-                  <marker date="1492473229688" expanded="true" signature="2756:3056" ph="endpoint: &lt;3 keys&gt;" />
-                  <marker date="1492473229688" expanded="true" signature="2796:2803" ph="default" />
-                  <marker date="1492473229688" expanded="true" signature="2816:2886" ph="queue_options: {3 keys}" />
-                  <marker date="1492473229688" expanded="true" signature="2841:2851" ph="endpoint" />
-                  <marker date="1492473229688" expanded="true" signature="2862:2866" ph="true" />
-                  <marker date="1492473229688" expanded="true" signature="2880:2885" ph="false" />
-                  <marker date="1492473229688" expanded="true" signature="3033:3056" ph="http://lo…lhost:8011" />
+                  <marker date="1492473958409" expanded="true" signature="1349:3678" ph="default: &lt;4 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1362:1461" ph="daemon: &lt;1 key&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1451:1461" ph="/var/www" />
+                  <marker date="1492473958409" expanded="true" signature="1467:1560" ph="logger: &lt;2 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1494:1518" ph="logs/file…-error.log" />
+                  <marker date="1492473958409" expanded="true" signature="1537:1560" ph="logs/file…g-info.log" />
+                  <marker date="1492473958409" expanded="true" signature="1566:1742" ph="connections: &lt;1 key&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1587:1742" ph="default: &lt;5 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1618:1629" ph="localhost" />
+                  <marker date="1492473958409" expanded="true" signature="1652:1656" ph="5672" />
+                  <marker date="1492473958409" expanded="true" signature="1679:1686" ph="guest" />
+                  <marker date="1492473958409" expanded="true" signature="1709:1716" ph="guest" />
+                  <marker date="1492473958409" expanded="true" signature="1739:1742" ph="/" />
+                  <marker date="1492473958409" expanded="true" signature="1748:3379" ph="consumers: &lt;2 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1748:3678" ph="consumers: &lt;2 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1767:2140" ph="mail_sender: &lt;5 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1767:3068" ph="mail_sender: &lt;5 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="1810:1817" ph="default" />
+                  <marker date="1492473958409" expanded="true" signature="1830:1902" ph="queue_options: {3 keys}" />
+                  <marker date="1492473958409" expanded="true" signature="1855:1867" ph="mail-queue" />
+                  <marker date="1492473958409" expanded="true" signature="1878:1882" ph="true" />
+                  <marker date="1492473958409" expanded="true" signature="1896:1901" ph="false" />
+                  <marker date="1492473958409" expanded="true" signature="1915:2140" ph="execute: &lt;4 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="2182:2254" ph="php bin/c… {content}" />
+                  <marker date="1492473958409" expanded="true" signature="2440:2463" ph="/var/www/…p-consumer" />
+                  <marker date="1492473958409" expanded="true" signature="2742:2751" ph="gzdeflate" />
+                  <marker date="1492473958409" expanded="true" signature="2869:2873" ph="true" />
+                  <marker date="1492473958409" expanded="true" signature="2982:3010" ph="logs/mail…-error.log" />
+                  <marker date="1492473958409" expanded="true" signature="3041:3068" ph="logs/mail…r-info.log" />
+                  <marker date="1492473958409" expanded="true" signature="3078:3379" ph="endpoint: &lt;3 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="3118:3125" ph="default" />
+                  <marker date="1492473958409" expanded="true" signature="3138:3208" ph="queue_options: {3 keys}" />
+                  <marker date="1492473958409" expanded="true" signature="3163:3173" ph="endpoint" />
+                  <marker date="1492473958409" expanded="true" signature="3184:3188" ph="true" />
+                  <marker date="1492473958409" expanded="true" signature="3202:3207" ph="false" />
+                  <marker date="1492473958409" expanded="true" signature="3356:3379" ph="http://lo…lhost:8011" />
+                  <marker date="1492473958409" expanded="true" signature="3477:3678" ph="production: &lt;1 key&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="3493:3678" ph="connections: &lt;1 key&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="3514:3678" ph="default: &lt;5 keys&gt;" />
+                  <marker date="1492473958409" expanded="true" signature="3545:3567" ph="rabbitmq.example.com" />
+                  <marker date="1492473958409" expanded="true" signature="3590:3594" ph="5672" />
+                  <marker date="1492473958409" expanded="true" signature="3617:3623" ph="user" />
+                  <marker date="1492473958409" expanded="true" signature="3646:3652" ph="pass" />
+                  <marker date="1492473958409" expanded="true" signature="3675:3678" ph="/" />
+                  <marker date="1492473958409" expanded="true" signature="3677:3678" ph="http://lo…lhost:8011" />
                 </folding>
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -488,12 +504,12 @@
       <option name="presentableId" value="Default" />
       <updated>1492174138617</updated>
       <workItem from="1492433142958" duration="53000" />
-      <workItem from="1492433504415" duration="28086000" />
+      <workItem from="1492433504415" duration="28816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28139000" />
+    <option name="totallyTimeSpent" value="28869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
@@ -664,14 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="34" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -901,14 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php-consumer/src/AmqpConsumerCommand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-327">
@@ -917,46 +917,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="730">
-            <caret line="178" column="16" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
+          <first_editor relative-caret-position="404">
+            <caret line="53" column="67" lean-forward="false" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
             <folding>
-              <marker date="1492473229688" expanded="true" signature="1154:3056" ph="default: &lt;4 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1167:1266" ph="daemon: &lt;1 key&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1256:1266" ph="/var/www" />
-              <marker date="1492473229688" expanded="true" signature="1272:1365" ph="logger: &lt;2 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1299:1323" ph="logs/file…-error.log" />
-              <marker date="1492473229688" expanded="true" signature="1342:1365" ph="logs/file…g-info.log" />
-              <marker date="1492473229688" expanded="true" signature="1371:1547" ph="connections: &lt;1 key&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1392:1547" ph="default: &lt;5 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1423:1434" ph="localhost" />
-              <marker date="1492473229688" expanded="true" signature="1457:1461" ph="5672" />
-              <marker date="1492473229688" expanded="true" signature="1484:1491" ph="guest" />
-              <marker date="1492473229688" expanded="true" signature="1514:1521" ph="guest" />
-              <marker date="1492473229688" expanded="true" signature="1544:1547" ph="/" />
-              <marker date="1492473229688" expanded="true" signature="1553:3056" ph="consumers: &lt;2 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1572:2746" ph="mail_sender: &lt;5 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1615:1622" ph="default" />
-              <marker date="1492473229688" expanded="true" signature="1635:1707" ph="queue_options: {3 keys}" />
-              <marker date="1492473229688" expanded="true" signature="1660:1672" ph="mail-queue" />
-              <marker date="1492473229688" expanded="true" signature="1683:1687" ph="true" />
-              <marker date="1492473229688" expanded="true" signature="1701:1706" ph="false" />
-              <marker date="1492473229688" expanded="true" signature="1720:2568" ph="execute: &lt;4 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="1986:2055" ph="php bin/c… {content}" />
-              <marker date="1492473229688" expanded="true" signature="2137:2160" ph="/var/www/…p-consumer" />
-              <marker date="1492473229688" expanded="true" signature="2438:2447" ph="gzdeflate" />
-              <marker date="1492473229688" expanded="true" signature="2564:2568" ph="true" />
-              <marker date="1492473229688" expanded="true" signature="2660:2688" ph="logs/mail…-error.log" />
-              <marker date="1492473229688" expanded="true" signature="2719:2746" ph="logs/mail…r-info.log" />
-              <marker date="1492473229688" expanded="true" signature="2756:3056" ph="endpoint: &lt;3 keys&gt;" />
-              <marker date="1492473229688" expanded="true" signature="2796:2803" ph="default" />
-              <marker date="1492473229688" expanded="true" signature="2816:2886" ph="queue_options: {3 keys}" />
-              <marker date="1492473229688" expanded="true" signature="2841:2851" ph="endpoint" />
-              <marker date="1492473229688" expanded="true" signature="2862:2866" ph="true" />
-              <marker date="1492473229688" expanded="true" signature="2880:2885" ph="false" />
-              <marker date="1492473229688" expanded="true" signature="3033:3056" ph="http://lo…lhost:8011" />
+              <marker date="1492473958409" expanded="true" signature="1349:3678" ph="default: &lt;4 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1362:1461" ph="daemon: &lt;1 key&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1451:1461" ph="/var/www" />
+              <marker date="1492473958409" expanded="true" signature="1467:1560" ph="logger: &lt;2 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1494:1518" ph="logs/file…-error.log" />
+              <marker date="1492473958409" expanded="true" signature="1537:1560" ph="logs/file…g-info.log" />
+              <marker date="1492473958409" expanded="true" signature="1566:1742" ph="connections: &lt;1 key&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1587:1742" ph="default: &lt;5 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1618:1629" ph="localhost" />
+              <marker date="1492473958409" expanded="true" signature="1652:1656" ph="5672" />
+              <marker date="1492473958409" expanded="true" signature="1679:1686" ph="guest" />
+              <marker date="1492473958409" expanded="true" signature="1709:1716" ph="guest" />
+              <marker date="1492473958409" expanded="true" signature="1739:1742" ph="/" />
+              <marker date="1492473958409" expanded="true" signature="1748:3379" ph="consumers: &lt;2 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1748:3678" ph="consumers: &lt;2 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1767:2140" ph="mail_sender: &lt;5 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1767:3068" ph="mail_sender: &lt;5 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="1810:1817" ph="default" />
+              <marker date="1492473958409" expanded="true" signature="1830:1902" ph="queue_options: {3 keys}" />
+              <marker date="1492473958409" expanded="true" signature="1855:1867" ph="mail-queue" />
+              <marker date="1492473958409" expanded="true" signature="1878:1882" ph="true" />
+              <marker date="1492473958409" expanded="true" signature="1896:1901" ph="false" />
+              <marker date="1492473958409" expanded="true" signature="1915:2140" ph="execute: &lt;4 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="2182:2254" ph="php bin/c… {content}" />
+              <marker date="1492473958409" expanded="true" signature="2440:2463" ph="/var/www/…p-consumer" />
+              <marker date="1492473958409" expanded="true" signature="2742:2751" ph="gzdeflate" />
+              <marker date="1492473958409" expanded="true" signature="2869:2873" ph="true" />
+              <marker date="1492473958409" expanded="true" signature="2982:3010" ph="logs/mail…-error.log" />
+              <marker date="1492473958409" expanded="true" signature="3041:3068" ph="logs/mail…r-info.log" />
+              <marker date="1492473958409" expanded="true" signature="3078:3379" ph="endpoint: &lt;3 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="3118:3125" ph="default" />
+              <marker date="1492473958409" expanded="true" signature="3138:3208" ph="queue_options: {3 keys}" />
+              <marker date="1492473958409" expanded="true" signature="3163:3173" ph="endpoint" />
+              <marker date="1492473958409" expanded="true" signature="3184:3188" ph="true" />
+              <marker date="1492473958409" expanded="true" signature="3202:3207" ph="false" />
+              <marker date="1492473958409" expanded="true" signature="3356:3379" ph="http://lo…lhost:8011" />
+              <marker date="1492473958409" expanded="true" signature="3477:3678" ph="production: &lt;1 key&gt;" />
+              <marker date="1492473958409" expanded="true" signature="3493:3678" ph="connections: &lt;1 key&gt;" />
+              <marker date="1492473958409" expanded="true" signature="3514:3678" ph="default: &lt;5 keys&gt;" />
+              <marker date="1492473958409" expanded="true" signature="3545:3567" ph="rabbitmq.example.com" />
+              <marker date="1492473958409" expanded="true" signature="3590:3594" ph="5672" />
+              <marker date="1492473958409" expanded="true" signature="3617:3623" ph="user" />
+              <marker date="1492473958409" expanded="true" signature="3646:3652" ph="pass" />
+              <marker date="1492473958409" expanded="true" signature="3675:3678" ph="/" />
+              <marker date="1492473958409" expanded="true" signature="3677:3678" ph="http://lo…lhost:8011" />
             </folding>
           </first_editor>
           <second_editor />
