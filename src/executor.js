@@ -72,6 +72,8 @@ _.extend(Executor.prototype, {
                 case 'gzdeflate':
                     payload = zlib.deflateRawSync(new Buffer(payload)).toString('base64');
                     break;
+                case 'none':
+                    break;
                 default:
                     throw new Error('Unrecognised compression algorithm "%s"', this.execute.compression);
             }
