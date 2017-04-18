@@ -56,12 +56,10 @@ _.extend(Executor.prototype, {
         //noinspection JSUnresolvedVariable
         let payload = (this.execute.properties)
             ? JSON.stringify({
-                body: this.message.body.data.toString(),
+                body: this.message.content.toString(),
                 properties: hydrate(this.message.properties)
             })
-            : this.message.body.data.toString();
-
-        //console.log(payload);
+            : this.message.content.toString();
 
         //noinspection JSUnresolvedVariable
         if (this.execute.compression) {

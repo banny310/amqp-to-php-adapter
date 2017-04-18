@@ -13,7 +13,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "amqp": "^0.2.6",
+    "amqplib": "^0.5.1",
     "daemonize2": "^0.4.2",
     "extend": "^3.0.0",
     "lodash": "^4.17.4",

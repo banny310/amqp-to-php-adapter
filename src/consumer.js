@@ -7,13 +7,13 @@ const _ = require('lodash');
 const Executor = require('./../src/executor');
 const RESULT = require('./../src/result');
 
-function Consumer(name, config, connection, logger) {
+function Consumer(name, config, connectionService, logger) {
     this.name = name;
     this.config = config;
     this.logger = logger;
-    this.connection = connection.getConnection(config.connection);
-    this.queue = null;
-    this.ctag = null;
+    this.open = connectionService.getChannel(config.connection);
+    this.channel = null;
+    this.consumerTag = null;
 }
 
 _.extend(Consumer.prototype, {
@@ -24,43 +24,45 @@ _.extend(Consumer.prototype, {
      * @param callback
      */
     consume: function (callback) {
-        this.queueDeclare((queue) => {
-            this.logger.info('Registering consumer...');
-            queue.subscribe({
-                ack: true,
-                prefetchCount: 1
-            }, (body, headers, deliveryInfo, messageObject) => {
-                //noinspection JSUnresolvedVariable
+        this.queueDeclare((channel, queue) => {
+            this.logger.info("Registering consumer on queue '%s'...", queue);
+            const fnConsume = (message) => {
                 this.logger.info('Processing message...');
+                //console.log(message);
+                if (message !== null) {
+                    // send to external callback
+                    callback(message);
 
-                const message = {
-                    body: body,
-                    properties: deliveryInfo
-                };
+                    // pass to PHP consumer (process internally)
+                    const executor = new Executor(
+                        message,
+                        this.config.execute,
+                        this.config.endpoint,
+                        this.logger
+                    );
 
-                callback(message);
+                    executor.process((result) => {
+                        try {
+                            this.handleResult(channel, message, result);
+                        } catch (e) {
+                            this.logger.error(e.message);
+                            this.handleResult(channel, message, RESULT.REJECT_AND_REQUEUE);
+                        }
+                    });
+                    this.logger.info('Succeeded processing message.');
+                } else {
+                    this.logger.info('Message is empty - ignored.');
+                }
+            };
 
-                const executor = new Executor(
-                    message,
-                    this.config.execute,
-                    this.config.endpoint,
-                    this.logger
-                );
-                executor.process((result) => {
-                    try {
-                        this.handleResult(messageObject, result);
-                    } catch(e) {
-                        this.logger.error(e.message);
-                        this.handleResult(messageObject, RESULT.REJECT_AND_REQUEUE);
-                    }
+            channel.prefetch(1);
+            channel.consume(queue, fnConsume, {noAck : false})
+                .then((ok) => {
+                    //console.log(ok);
+                    this.consumerTag = ok.consumerTag;
+                    this.logger.info('Succeeded registering consumer with tag: %s', this.consumerTag);
+                    this.logger.info('Waiting for messages...');
                 });
-
-                this.logger.info('Succeeded processing message.');
-            }).addCallback((ok) => {
-                this.ctag = ok.consumerTag;
-                this.logger.info('Succeeded registering consumer with tag: %s', this.ctag);
-                this.logger.info('Waiting for messages...');
-            });
         });
     },
 
@@ -70,46 +72,46 @@ _.extend(Consumer.prototype, {
      * @param callback
      */
     queueDeclare: function (callback) {
-        this.connection
-            .then((connection) => {
+        this.open
+            .then((channel) => {
                 //noinspection JSPotentiallyInvalidUsageOfThis,JSUnresolvedVariable
-                const queueName = this.config.queue_options.name;
-                this.logger.info("Opening queue \"%s\"...", queueName);
+                const queue = this.config.queue_options.name;
+                this.logger.info("Opening queue \"%s\"...", queue);
 
-                //noinspection JSPotentiallyInvalidUsageOfThis,JSUnresolvedVariable
-                this.queue = connection.queue(queueName, this.config.queue_options, (queue) => {
-                    this.logger.info("Queue \"%s\" opened.", queue.name);
-                    //noinspection JSUnresolvedFunction
-                    callback.apply(this, [queue]);
-                });
+                //noinspection JSUnresolvedVariable
+                return channel.assertQueue(queue, this.config.queue_options)
+                    .then((ok) => {
+                        //console.log(ok);
+                        this.logger.info("Queue \"%s\" opened.", queue);
+                        callback.apply(this, [channel, queue]);
+                    });
             }, (e) => {
                 this.logger.error('Error: %s', e.message, e);
             });
     },
 
     stop: function () {
-        if (this.queue && this.ctag) {
-            this.queue.unsubscribe(this.ctag);
+        if (this.open && this.consumerTag) {
+            this.open.then((channel) => {
+                    channel.cancel(this.consumerTag);
+                });
         }
     },
 
-    handleResult: function (messageObject, code) {
+    handleResult: function (channel, message, code) {
         switch (code) {
             case RESULT.ACKNOWLEDGEMENT:
-                //noinspection JSUnresolvedVariable
-                messageObject.acknowledge(false);
+                channel.ack(message);
                 this.logger.info("Message acknowledged");
                 break;
 
             case RESULT.REJECT:
-                //noinspection JSUnresolvedVariable
-                messageObject.reject(false);
+                channel.reject(message, false);
                 this.logger.info("Message rejected");
                 break;
 
             case RESULT.REJECT_AND_REQUEUE:
-                //noinspection JSUnresolvedVariable
-                messageObject.reject(true);
+                channel.reject(message, true);
                 this.logger.info("Message rejected and redelivered");
                 break;
 

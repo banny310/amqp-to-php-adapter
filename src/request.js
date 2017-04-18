@@ -75,7 +75,7 @@ _.extend(Request.prototype, {
      */
     createPostData: function (message) {
         return require('querystring').stringify({
-            body: message.body.data.toString(),
+            body: message.content.toString(),
             properties: JSON.stringify(hydrate(message.properties))
         });
     },

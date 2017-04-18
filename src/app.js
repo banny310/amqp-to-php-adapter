@@ -4,7 +4,7 @@
 'use strict';
 
 const _ = require('lodash');
-const Connection = require('./../src/connection');
+const ConnectionService = require('./../src/connection-service');
 const Consumer = require('./../src/consumer');
 const inspect = require('util').inspect;
 
@@ -12,7 +12,7 @@ function App(config, logProvider) {
     this.config = config;
     this.logProvider = logProvider;
     this.logger = logProvider.get();
-    this.connection = new Connection(config.connections, this.logger);
+    this.connectionService = new ConnectionService(config.connections, this.logger);
     this.consumers = {};
 }
 
@@ -28,7 +28,7 @@ _.extend(App.prototype, {
     runConsumer : function(config, name) {
         //noinspection JSUnresolvedVariable
         const logger = this.logProvider.get(name, config);
-        const consumer = new Consumer(name, config, this.connection, logger);
+        const consumer = new Consumer(name, config, this.connectionService, logger);
         consumer.consume((message) => {
             //this.logger.info('Message arrived', message);
             //console.log(message);
