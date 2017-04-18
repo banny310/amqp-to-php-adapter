@@ -195,6 +195,13 @@ class AmqpConsumerCommand extends Command
             return self::REJECT_AND_REQUEUE;
         }
     }
+    
+    private function process(AMQPMessage $message)
+    {
+        // ...
+        
+        return true;
+    }
 }
 ```
 
