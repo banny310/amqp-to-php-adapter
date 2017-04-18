@@ -16,12 +16,12 @@ const defaultClientProperties = {
     }
 };
 
-function Request(url, logger) {
+function Requester(url, logger) {
     this.url = url;
     this.logger = logger;
 }
 
-_.extend(Request.prototype, {
+_.extend(Requester.prototype, {
 
     /**
      * Execute http request for given message and return response
@@ -42,12 +42,12 @@ _.extend(Request.prototype, {
                 response.setEncoding('UTF-8');
 
                 let body = '';
-                //another chunk of data has been recieved, so append it to `body`
+                //another chunk of data has been received, so append it to `body`
                 response.on('data', (chunk) => {
                     body += chunk;
                 });
 
-                //the whole response has been recieved
+                //the whole response has been received
                 response.on('end', () => {
                     this.logger.info('Request finished with status %d', response.statusCode);
                     resolve({
@@ -97,4 +97,4 @@ _.extend(Request.prototype, {
 
 });
 
-module.exports = Request;
+module.exports = Requester;

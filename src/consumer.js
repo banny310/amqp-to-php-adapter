@@ -28,7 +28,7 @@ _.extend(Consumer.prototype, {
             this.logger.info("Registering consumer on queue '%s'...", queue);
             const fnConsume = (message) => {
                 this.logger.info('Processing message...');
-                //console.log(message);
+
                 if (message !== null) {
                     // send to external callback
                     callback(message);
@@ -43,6 +43,9 @@ _.extend(Consumer.prototype, {
 
                     executor.process((result) => {
                         try {
+                            if (message.properties.replyTo) {
+                                channel.sendToQueue(message.properties.replyTo, new Buffer('something to do'));
+                            }
                             this.handleResult(channel, message, result);
                         } catch (e) {
                             this.logger.error(e.message);

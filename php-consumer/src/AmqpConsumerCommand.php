@@ -67,10 +67,16 @@ class AmqpConsumerCommand extends Command
 
         //$data = json_decode($data, true);
 
-        $output = $input->getOption('output');
-        if ($output) {
-            file_put_contents($output, $data);
+        $save = $input->getOption('output');
+        if ($save) {
+            $savedBytes = file_put_contents($save, $data);
+            if (false === $savedBytes) {
+                throw new \RuntimeException("Saving failed");
+            }
         }
+
+        // write
+        $output->write($data);
 
         return self::ACKNOWLEDGEMENT;
     }

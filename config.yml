@@ -26,8 +26,8 @@ default:
                 # Placeholders:
                 # - {content} - will be replaced with base64 encoded message body
                 # - {file} - will be replaced with file with stored {content}
-                command: 'php bin/console.php amqp:mail-sender --compression gzdeflate {content}'
-                # command: 'cat {file} | php bin/console.php amqp:mail-sender --compression gzdeflate'
+                command: 'php console.php app:consumer --compression gzdeflate {content}'
+                # command: 'cat {file} | php console.php amqp:mail-sender --compression gzdeflate'
 
                 # Directory within command will be executed
                 cwd: '/var/www/php-consumer'
