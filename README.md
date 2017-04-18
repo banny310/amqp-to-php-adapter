@@ -148,7 +148,6 @@ class AmqpConsumerCommand extends Command
             ->setName('app:consumer')
             ->addArgument('message', InputArgument::OPTIONAL)
             ->addOption('compression', 'c', InputOption::VALUE_REQUIRED)
-            ->addOption('output', 'o', InputOption::VALUE_OPTIONAL)
         ;
     }
 
@@ -184,14 +183,17 @@ class AmqpConsumerCommand extends Command
                 break;
         }
 
-        //$data = json_decode($data, true);
+        $data = json_decode($data, true);
 
-        $output = $input->getOption('output');
-        if ($output) {
-            file_put_contents($output, $data);
+        // restore message
+        $msg = new AMQPMessage($data['body'], $data['properties]);
+        try {
+            return ($this->process($msg))
+                ? self::ACKNOWLEDGEMENT
+                : self::REJECT;
+        } catch(\Exception $e) {
+            return self::REJECT_AND_REQUEUE;
         }
-
-        return self::ACKNOWLEDGEMENT;
     }
 }
 ```
