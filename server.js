@@ -25,8 +25,10 @@ app.run();
 logger.info('Started.');
 
 process.on("uncaughtException", function (err) {
-    logger.error("Uncaught exception...");
+    logger.error((new Date).toUTCString() + " Uncaught exception...");
+    logger.error(err.message);
     logger.error(err.stack);
+    process.exit(1);
 });
 
 process.once("SIGTERM", function () {
