@@ -87,6 +87,7 @@ _.extend(Consumer.prototype, {
                         //console.log(ok);
                         this.logger.info("Queue \"%s\" opened.", queue);
                         callback.apply(this, [channel, queue]);
+                        return null;
                     });
             }, (e) => {
                 this.logger.error('Error: %s', e.message, e);
@@ -102,24 +103,26 @@ _.extend(Consumer.prototype, {
     },
 
     handleResult: function (channel, message, code) {
+        //noinspection FallThroughInSwitchStatementJS
         switch (code) {
             case RESULT.ACKNOWLEDGEMENT:
                 channel.ack(message);
                 this.logger.info("Message acknowledged");
                 break;
-
-            case RESULT.REJECT:
-                channel.reject(message, false);
-                this.logger.info("Message rejected");
-                break;
-
+            
             case RESULT.REJECT_AND_REQUEUE:
                 channel.reject(message, true);
                 this.logger.info("Message rejected and redelivered");
                 break;
 
             default:
-                throw new Error('Unrecognised result code: ' + code);
+                this.logger.warning('Unrecognised result code: ' + code);
+                // no break;
+
+            case RESULT.REJECT:
+                channel.reject(message, false);
+                this.logger.info("Message rejected");
+                break;
         }
     }
 

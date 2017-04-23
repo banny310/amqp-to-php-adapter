@@ -41,10 +41,10 @@ _.extend(Executor.prototype, {
         cmder.execute(this.message)
             .then((response) => {
                 this.logger.info("Output: %s", response.body);
-
                 callback(response.statusCode);
             }, (exception) => {
                 this.logger.error('Cmder error: ' + exception.message);
+                callback(RESULT.REJECT);
             });
     },
 
@@ -68,6 +68,7 @@ _.extend(Executor.prototype, {
                 }
             }, (exception) => {
                 this.logger.error('Http error: ' + exception.message);
+                callback(RESULT.REJECT);
             });
     }
 });

@@ -85,7 +85,7 @@ _.extend(Commander.prototype, {
                         body: stderr + stdout
                     });
                 } else {
-                    // command successful executed (result.code = 0)
+                    // command successful executed (result.code == 0)
                     // remove temp file if saved
                     if (tmpfile) {
                         fs.unlinkSync(tmpfile);

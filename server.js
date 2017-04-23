@@ -11,7 +11,7 @@ const LogProvider = require('./src/log-provider');
 // Load configuration
 const argv = require('minimist')(process.argv.slice(2));
 const configFile = _.defaultTo(argv.config, './config.yml');
-const env = _.defaultTo(argv.env, 'production');
+const env = _.defaultTo(argv.env, process.env.NODE_ENV);
 
 // Initialize
 const config = yamlConfig.readConfig(configFile, env);
